@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class generalFunctions {
 	private static Scanner sc = new Scanner(System.in);
 	
+	public void
+	
 	public String [] readFile(String path) throws IOException{
 		File fIn = new File(path);
 		Scanner reader = new Scanner(fIn);

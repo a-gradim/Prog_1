@@ -26,6 +26,9 @@ public class Exercise_1 {
 			case 3:
 				printData(pos);
 				break;
+			case 4:
+				
+				 break;
 			case 5:
 				
 				break;
