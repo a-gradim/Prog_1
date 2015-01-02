@@ -27,7 +27,7 @@ public class Exercise_1 {
 				printData(pos);
 				break;
 			case 4:
-				
+			//	orderData(mes1, true);
 				 break;
 			case 5:
 				
@@ -51,6 +51,18 @@ public class Exercise_1 {
 		}while(choice != 9);
 	}
 	
+	/*public static void orderData(MeteoData[] mes, boolean isCrescent) {
+		int[] data1 = new int[mes.length];
+		int[] data2 = new int[mes.length];
+		for(int i = 0; i < mes.length; i++){
+			data1[i] = mes[i].temp;
+			data1[i] = mes[i].hum;
+		}
+		fList.orderArray(data1, isCrescent);
+		
+		
+	}*/
+
 	public static void printData(int pos) {
 		System.out.println("Dados da metereologicos: ");
 		for(int i = 0; i < pos; i ++){
@@ -102,5 +114,6 @@ public class Exercise_1 {
 }
 
 class MeteoData{
-	int temp, hum;
+	static int temp;
+	static int hum;
 }

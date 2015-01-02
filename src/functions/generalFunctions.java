@@ -7,7 +7,27 @@ import java.util.Scanner;
 public class generalFunctions {
 	private static Scanner sc = new Scanner(System.in);
 	
-	public void
+	public void orderArray(int[] array, boolean isCrescent){
+		int temp;
+		for(int i = 0; i < array.length-1; i++){
+			for(int j = i+1; j < array.length; j++){
+				if(isCrescent){
+					if(array[i] > array[j]){
+						temp = array[i];
+						array[i] = array[j];
+						array[j] = temp;
+					}
+				}else{
+					if(array[i] < array[j]){
+						temp = array[i];
+						array[i] = array[j];
+						array[j] = temp;
+					}
+				}
+			}
+		}
+		
+	}
 	
 	public String [] readFile(String path) throws IOException{
 		File fIn = new File(path);
