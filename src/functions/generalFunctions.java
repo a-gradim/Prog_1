@@ -15,6 +15,7 @@ public class generalFunctions {
 			}catch(InputMismatchException e){
 				System.out.println("Insert numbers only!");
 				temp = 0;
+				temp = 0;
 			}			
 		}
 		
