@@ -1,31 +1,34 @@
 package aula_13;
 
+import java.io.IOException;
+
 import functions.generalFunctions;
 
 public class Exercise_1 {
-	//public static Scanner sc = new Scanner(System.in);
+	public static String path = "meteoData";
+	
 	public static generalFunctions fList = new generalFunctions();
-	MeteoData [] mes1 = new MeteoData[31];
+	public static MeteoData [] mes1 = new MeteoData[31];
 	
 
-	public static void run(){
-		int choice = 0;
+	public static void run() throws IOException{
+		int choice = 0, pos = 0;
 		do{
 			menu();
-			choice = fList.readRangedInt(1,9);
+			choice = fList.insertInt(1, 9);
 			switch(choice){
 			case 1:
-				
+				pos = read();
 				break;
 			case 2:
-				
+				pos = addMeasure(pos);
 				break;
 			case 3:
-				
+				printData(pos);
 				break;
 			case 4:
-				
-				break;
+			//	orderData(mes1, true);
+				 break;
 			case 5:
 				
 				break;
@@ -48,6 +51,33 @@ public class Exercise_1 {
 		}while(choice != 9);
 	}
 	
+	/*public static void orderData(MeteoData[] mes, boolean isCrescent) {
+		int[] data1 = new int[mes.length];
+		int[] data2 = new int[mes.length];
+		for(int i = 0; i < mes.length; i++){
+			data1[i] = mes[i].temp;
+			data1[i] = mes[i].hum;
+		}
+		fList.orderArray(data1, isCrescent);
+		
+		
+	}*/
+
+	public static void printData(int pos) {
+		System.out.println("Dados da metereologicos: ");
+		for(int i = 0; i < pos; i ++){
+			System.out.printf("Temp: %6.2d ::: Hum: %6.2d", mes1[i].temp, mes1[i].hum);
+		}
+		
+	}
+
+	public static int addMeasure(int pos) {
+			mes1[pos].temp = fList.insertInt("Insira o valor da temperatura");
+			mes1[pos].hum = fList.insertInt("Insira o valor da humidade", 0, 100);
+			pos++;
+		return pos;
+	}
+
 	public static void menu(){
 		System.out.println("Estacao meteorologica:\n"
 				+ "1 - Ler ficheiro de dados\n"
@@ -62,10 +92,28 @@ public class Exercise_1 {
 				+ "Opcao ->");
 	}
 
+	public static int read() throws IOException{
+		String [] data = fList.readFile(path);
+		for(int i = 0; i < data.length; i++){
+			mes1[i] = new MeteoData();
+			int j;
+			for(j = 0; j < data[i].length(); j++){
+				if( !(Character.isDigit(data[i].charAt(j)))){
+					break;
+				}
+			}
+			String firstNum = data[i].substring(0, j);
+			String seconfNum = data[i].substring(j+1);
+			mes1[i].hum = Integer.parseInt(firstNum); ///////////////Problema dados meteo
+			mes1[i].temp = Integer.parseInt(seconfNum);////////////// sao double
+		}
+		return data.length;
+	}
 	
 	
 }
 
 class MeteoData{
-	double temp, hum;
+	static int temp;
+	static int hum;
 }
