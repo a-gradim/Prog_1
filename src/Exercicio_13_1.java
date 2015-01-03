@@ -1,8 +1,11 @@
+import java.util.Scanner;
+import java.io.*;
 
 public class Exercicio_13_1 {
 	
 	public static void main(String[] args){
 		
+		menu();
 		
 	}
 	
@@ -18,6 +21,16 @@ public class Exercicio_13_1 {
 					+ "8 - Calcular histograma das temperaturas e humidade\n"
 					+ "9 - Terminar o programa\n"
 					+ "Opcao ->");
+	}
+	
+	public static void readDataFile(String path) throws IOException{
+		File fIn = new File(path);
+		Scanner reader = new Scanner(fIn);
+		
+		
+		
+		
+		
 	}
 
 }
